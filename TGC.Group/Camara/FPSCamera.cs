@@ -58,7 +58,7 @@ namespace TGC.Group.Camara
             this.positionEye = TGCVector3.Empty;
             this.mouseCenter = new Point(D3DDevice.Instance.Device.Viewport.Width / 2, D3DDevice.Instance.Device.Viewport.Height / 2);
             this.RotationSpeed = 0.1f;
-            this.MovementSpeed = 20f;
+            this.MovementSpeed = 500f;
             this.JumpSpeed = 500f;
             this.directionView = new TGCVector3(0, 0, -1);
             this.leftrightRot = FastMath.PI_HALF;
@@ -154,22 +154,22 @@ namespace TGC.Group.Camara
             var moveVector = TGCVector3.Empty;
             //Forward
             if (Input.keyDown(Key.W)) {
-                moveVector += new TGCVector3(0, 0, 1) * MovementSpeed;
+                moveVector += new TGCVector3(0, 0, -1) * MovementSpeed;
             }
 
             //Backward
             if (Input.keyDown(Key.S)) {
-                moveVector += new TGCVector3(0, 0, -1) * MovementSpeed;
+                moveVector += new TGCVector3(0, 0, 1) * MovementSpeed;
             }
 
             //Strafe right
             if (Input.keyDown(Key.D)) {
-                moveVector += new TGCVector3(1, 0, 0) * MovementSpeed;
+                moveVector += new TGCVector3(-1, 0, 0) * MovementSpeed;
             }
 
             //Strafe left
             if (Input.keyDown(Key.A)) {
-                moveVector += new TGCVector3(-1, 0, 0) * MovementSpeed;
+                moveVector += new TGCVector3(1, 0, 0) * MovementSpeed;
             }
 
             //Jump
